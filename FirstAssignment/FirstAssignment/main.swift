@@ -70,6 +70,8 @@ func chooseAction(_ number: Int){
         getLastElement();
    case 4:
     checkEmpty();
+   case 9:
+    exit();
    default:
     print("please enter a valid number")
     }
