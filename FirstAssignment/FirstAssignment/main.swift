@@ -20,6 +20,7 @@ func displayMenu(){
     print("to delete last node enter 2")
     print("to get last added node enter 3")
     print("to checkif stack is empty enter 4")
+    print("to exit press 9")
 
 }
 
@@ -70,6 +71,8 @@ func chooseAction(_ number: Int){
         getLastElement();
    case 4:
     checkEmpty();
+   case 9:
+    exit();
    default:
     print("please enter a valid number")
     }
