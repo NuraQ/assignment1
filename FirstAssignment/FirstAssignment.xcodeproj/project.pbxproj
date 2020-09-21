@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1660396E2518DD30002E410F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660396D2518DD30002E410F /* Queue.swift */; };
+		1660397025191A63002E410F /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660396F25191A63002E410F /* Stack.swift */; };
 		1667A3EB25187B3E00B1C9A2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667A3EA25187B3E00B1C9A2 /* main.swift */; };
 		1667A3F225187C4B00B1C9A2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1667A3F125187C4B00B1C9A2 /* Node.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1660396D2518DD30002E410F /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		1660396F25191A63002E410F /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = /Users/asal3/Assignment1/FirstAssignment/FirstAssignment/Stack.swift; sourceTree = "<absolute>"; };
 		1667A3E725187B3E00B1C9A2 /* FirstAssignment */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FirstAssignment; sourceTree = BUILT_PRODUCTS_DIR; };
 		1667A3EA25187B3E00B1C9A2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1667A3F125187C4B00B1C9A2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 		1667A3E925187B3E00B1C9A2 /* FirstAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				1660396F25191A63002E410F /* Stack.swift */,
+				1660396D2518DD30002E410F /* Queue.swift */,
 				1667A3EA25187B3E00B1C9A2 /* main.swift */,
 				1667A3F125187C4B00B1C9A2 /* Node.swift */,
 			);
@@ -123,8 +129,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1660397025191A63002E410F /* Stack.swift in Sources */,
 				1667A3EB25187B3E00B1C9A2 /* main.swift in Sources */,
 				1667A3F225187C4B00B1C9A2 /* Node.swift in Sources */,
+				1660396E2518DD30002E410F /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
