@@ -1,17 +1,8 @@
-//
-//  main.swift
-//  FirstAssignment
-//
-//  Created by Asal 3 on 21/09/2020.
-//  Copyright © 2020 Asal 3. All rights reserved.
-//
-
 import Foundation
 
-print("Hello, World!")
-var Que = Queue<Node>()
 
-print("Please enter your name:")
+var Qu = Queue<Node>()
+
 
 while (true){
     displayMenu();
@@ -26,21 +17,60 @@ while (true){
 
 func displayMenu(){
     print("to add node enter 1")
-    print("to delete last node enter w")
-    print("to get last added node enter 3")
+    print("to delete first node from queue enter 2")
+    print("to get Top node enter 3")
     print("to checkif queue is empty enter 4")
 
 }
 
+
+
+func getLastElement(){
+    let lastElement = Qu.peek();
+    if lastElement != nil{
+        print("last added employee has id  \(lastElement!.id) and description: \(lastElement!.description)");
+    } else{
+        print("stack is empty)");
+    }
+}
+
+func addElement(){
+    let employee =  Node();
+    Qu.enque(item: employee)
+
+}
+
+func popOperation(){
+    let poppedValue = Qu.deque();
+    if poppedValue == nil{
+        print("nothing to pop , Queue is empty")
+    }else{
+        print("popped element has id of \(poppedValue!.id) and description: \(poppedValue!.description)");
+    }
+}
+
+func checkEmpty(){
+    let empty = Qu.isEmpty();
+    if empty {
+        print("empty stack");
+    }else{
+        print("stack not empty");
+
+    }
+}
 func chooseAction(_ number: Int){
- /*   switch number {
+   switch number {
     case 0:
         return;
     case 1:
-        let employee =  Node();
-        Que.enqueue(item: <#T##Node#>)
-        
+        addElement();
     case 2:
-        
-    }*/
+        popOperation();
+    case 3:
+        getLastElement();
+   case 4:
+    checkEmpty();
+   default:
+    print("please enter a valid number")
+    }
 }

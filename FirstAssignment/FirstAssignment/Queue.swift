@@ -4,15 +4,15 @@ import Foundation
 class Queue<Element>{
     var items = [Element]();
     
-     func enqueue(item : Element){
+     func enque(item : Element){
         items.append(item)
     }
-     func dequeue() {
+     func deque() -> Element?{
+        let first = items.first;
         if !items.isEmpty{
             items.removeFirst();
-        }else{
-            print("Queue is empty ,nothing to pop")
         }
+        return first;
     }
     
     func peek() -> Element?{
