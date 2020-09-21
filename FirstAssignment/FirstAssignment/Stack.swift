@@ -8,11 +8,9 @@ class Stack<Element>{
         items.append(item)
     }
      func pop() -> Element?{
-        var last = items.last;
+        let last = items.last;
         if !items.isEmpty{
             items.removeLast();
-        }else{
-            print("stack is empty ,nothing to pop")
         }
         return last;
     }
