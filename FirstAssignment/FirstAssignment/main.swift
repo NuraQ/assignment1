@@ -1,7 +1,7 @@
 import Foundation
 
 
-var st = Stack<Node>()
+var Qu = Queue<Node>()
 
 
 while (true){
@@ -17,16 +17,16 @@ while (true){
 
 func displayMenu(){
     print("to add node enter 1")
-    print("to delete last node enter 2")
-    print("to get last added node enter 3")
-    print("to checkif stack is empty enter 4")
+    print("to delete first node from queue enter 2")
+    print("to get Top node enter 3")
+    print("to checkif queue is empty enter 4")
 
 }
 
 
 
 func getLastElement(){
-    let lastElement = st.peek();
+    let lastElement = Qu.peek();
     if lastElement != nil{
         print("last added employee has id  \(lastElement!.id) and description: \(lastElement!.description)");
     } else{
@@ -36,21 +36,21 @@ func getLastElement(){
 
 func addElement(){
     let employee =  Node();
-    st.push(item: employee)
+    Qu.enque(item: employee)
 
 }
 
 func popOperation(){
-    let poppedValue = st.pop();
+    let poppedValue = Qu.deque();
     if poppedValue == nil{
-        print("nothing to pop , Stack is empty")
+        print("nothing to pop , Queue is empty")
     }else{
         print("popped element has id of \(poppedValue!.id) and description: \(poppedValue!.description)");
     }
 }
 
 func checkEmpty(){
-    let empty = st.isEmpty();
+    let empty = Qu.isEmpty();
     if empty {
         print("empty stack");
     }else{
