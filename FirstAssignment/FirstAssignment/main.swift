@@ -61,7 +61,7 @@ func checkEmpty(){
 func chooseAction(_ number: Int){
    switch number {
     case 0:
-        return;
+        return;2
     case 1:
         addElement();
     case 2:
