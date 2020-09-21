@@ -45,7 +45,7 @@ func popOperation(){
     if poppedValue == nil{
         print("nothing to pop , Stack is empty")
     }else{
-        print("popped element is \(poppedValue)");
+        print("popped element has id of \(poppedValue!.id) and description: \(poppedValue!.description)");
     }
 }
 
@@ -61,7 +61,7 @@ func checkEmpty(){
 func chooseAction(_ number: Int){
    switch number {
     case 0:
-        return;
+        return;2
     case 1:
         addElement();
     case 2:
