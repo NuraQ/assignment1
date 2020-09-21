@@ -1,22 +1,22 @@
 import Foundation
 
 
-class Stack<Element>{
+class Queue<Element>{
     var items = [Element]();
     
-     func push(item : Element){
+     func enque(item : Element){
         items.append(item)
     }
-     func pop() -> Element?{
-        let last = items.last;
+     func deque() -> Element?{
+        let first = items.first;
         if !items.isEmpty{
-            items.removeLast();
+            items.removeFirst();
         }
-        return last;
+        return first;
     }
     
     func peek() -> Element?{
-           return items.isEmpty ? nil : items.last
+           return items.isEmpty ? nil : items.first
     }
     
     func isEmpty() -> Bool{
