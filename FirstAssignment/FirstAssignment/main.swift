@@ -7,9 +7,7 @@ addElement();
 getLastElement();
 addElement();
 getLastElement();
-let poppedValue = st.pop();
-
-
+popOperation();
 print("stack pop operation")
 getLastElement();
 popOperation();
@@ -37,6 +35,7 @@ func addElement(){
 }
 
 func popOperation(){
+    let poppedValue = st.pop();
     if poppedValue == nil{
         print("nothing to pop , Stack is empty")
     }else{
