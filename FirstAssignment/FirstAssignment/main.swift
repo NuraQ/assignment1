@@ -4,6 +4,7 @@ import Foundation
 var Qu = Queue<Node>()
 var st = Stack<Node>()
 var isStack: Bool = false
+var str: String = " stack "
 initialize()
 
 while (true){
@@ -34,6 +35,9 @@ if  let line = readLine(){
        }
      }
    }
+    
+    str = isStack ? " stack "   : " Queue "
+
 }
 
 func displayMenu(){
@@ -46,34 +50,34 @@ func displayMenu(){
 
 func getLastElement(){
      let lastElement = isStack ? st.peek() : Qu.peek()
-    if lastElement != nil{
-        print("last added employee has id  \(lastElement!.id) and description: \(lastElement!.description)");
+     if lastElement != nil{
+        print("in \(str) : last added employee has id  \(lastElement!.id) and description: \(lastElement!.description)");
     } else{
-        print("stack is empty)");
+        print("\(str) is empty)");
     }
 }
 
 func addElement(){
     let employee =  Node();
     isStack ? st.push(item: employee) : Qu.enque(item: employee)
-
+    print("element added to \(str)")
 }
 
 func popOperation(){
     let poppedValue = isStack ? st.pop() : Qu.deque()
     if poppedValue == nil{
-        print("nothing to pop , Queue is empty")
+        print("nothing to pop ,empty \(str)")
     }else{
-        print("popped element has id of \(poppedValue!.id) and description: \(poppedValue!.description)");
+        print("in \(str) popped element has id of \(poppedValue!.id) and description: \(poppedValue!.description)");
     }
 }
 
 func checkEmpty(){
     let empty = isStack ? st.isEmpty() : Qu.isEmpty()
     if empty {
-        print("empty stack");
+        print("empty \(str)");
     }else{
-        print("not empty");
+        print("\(str) not empty");
 
     }
 }
