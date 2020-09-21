@@ -3,19 +3,25 @@ import Foundation
 
 var st = Stack<Node>()
 
-addElement();
-getLastElement();
-addElement();
-getLastElement();
-popOperation();
-print("stack pop operation")
-getLastElement();
-popOperation();
-print("stack pop operation")
-popOperation();
 
+while (true){
+    displayMenu();
+    if  let line = readLine(){
+        if let Number = Int(line){
+            chooseAction(Number);
+        }
 
+    }
 
+}
+
+func displayMenu(){
+    print("to add node enter 1")
+    print("to delete last node enter 2")
+    print("to get last added node enter 3")
+    print("to checkif stack is empty enter 4")
+
+}
 
 
 
@@ -40,5 +46,31 @@ func popOperation(){
         print("nothing to pop , Stack is empty")
     }else{
         print("popped element is \(poppedValue)");
+    }
+}
+
+func checkEmpty(){
+    let empty = st.isEmpty();
+    if empty {
+        print("empty stack");
+    }else{
+        print("stack not empty");
+
+    }
+}
+func chooseAction(_ number: Int){
+   switch number {
+    case 0:
+        return;
+    case 1:
+        addElement();
+    case 2:
+        popOperation();
+    case 3:
+        getLastElement();
+   case 4:
+    checkEmpty();
+   default:
+    print("please enter a valid number")
     }
 }
