@@ -2,8 +2,8 @@ import Foundation
 
 
 var tst = Node()
-var Qu = Queue<Node>()
-var st = Stack<Node>(MAX: 5,proto: tst)
+var Qu = Queue<Node>(MAX: 5)
+var st = Stack<Node>(MAX: 5)
 var isStack: Bool = false
 var str: String = " stack "
 initialize()
@@ -49,7 +49,7 @@ func displayMenu(){
     print("to print sorted values 6")
     print("to insert at index of your choice press 7")
     print("to remove at index of your choice press 8")
-
+    print("to expand size press 11")
     print("to exit current dataStructure enter 9")
 }
 
@@ -64,7 +64,7 @@ func getLastElement(){
 
 func addElement(){
     let employee =  Node();
-    isStack ? st.push(item: employee , id: employee.id) : Qu.enque(item: employee)
+    isStack ? st.push(item: employee , id: employee.id) : Qu.enque(item: employee, id: employee.id)
     print("element added to \(str)")
 }
 
@@ -114,17 +114,22 @@ func chooseAction(_ number: Int){
         popOperation();
     case 3:
         getLastElement();
-   case 4:
+    case 4:
         checkEmpty();
-   case 6:
-    var x = st.sort();
-    for i in x{
-        print("sorted \(i.id)")
+    case 6:
+    var arr = isStack ? st.sort() : Qu.sort()
+    for item in 0..<arr.count{
+        if arr[item] != nil{
+            print("sorted with following ids \(arr[item]!.id)")
+        }
+        
     }
    case 7:
     insertAtIndex();
    case 8:
     removeAtIndex();
+   case 11:
+   isStack ? st.expandSize(newSize: 5) : Qu.expandSize(newSize: 5)
     
    default:
     print("please enter a valid number")

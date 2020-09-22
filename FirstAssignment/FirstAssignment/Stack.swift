@@ -5,24 +5,24 @@ class Stack<Element>{
     var items : [Element];
     var maxKey: Int;
     var maxCapacity: Int
-//    init(){
-//     items = [Element]();
-//    }
+
     var sortedItems = [Int: Element]()
 
-    init(MAX: Int , proto: Element){
-        self.maxCapacity = MAX
-     items = [Element](repeating: proto,count: MAX)
-     maxKey = 0
+    init(MAX: Int){
+     self.maxCapacity = MAX
+        items = [Element]()
+        items.reserveCapacity(MAX)
+        maxKey = 0
     }
 
     func push(item: Element,id: Int ){
         if id > maxKey{
             maxKey = id;
         }
-        if sortedItems[id] == nil{
+        if sortedItems[id] == nil && sortedItems.count < maxCapacity{
            sortedItems[id] = item ;
             items.append(item)
+            print("appended")
         }
     }
      func pop() -> Element?{
@@ -30,24 +30,26 @@ class Stack<Element>{
         if !items.isEmpty{
             items.removeLast();
         }
-        return last;
+        return last!;
     }
     
     func insertAt(index: Int,item: Element){
-        if sortedItems[index] != nil{
+        if sortedItems[index] == nil{
            sortedItems[index] = item ;
+           items.insert(item,at: index)
+
         }
-        items.insert(item,at: index)
     }
-    func sort() -> [Element] {
+    func sort() -> [Element?] {
         var index = 0
+        var itms = [Element]()
         for i in 0..<maxKey{
-            if sortedItems[i] != nil{
-                items[index] = sortedItems[i]!
+            if let x = sortedItems[i] {
+                itms.append(x)
                 index += 1
             }
         }
-        return items
+        return itms
 
     }
     
@@ -65,10 +67,14 @@ class Stack<Element>{
       }
     
     func peek() -> Element?{
-           return items.isEmpty ? nil : items.last
+        return (items.isEmpty ? nil : items.last)!
     }
     
     func isEmpty() -> Bool{
        return items.isEmpty ?  true :  false
+    }
+    func expandSize(newSize: Int){
+        maxCapacity += newSize
+        items.reserveCapacity(newSize)
     }
 }
