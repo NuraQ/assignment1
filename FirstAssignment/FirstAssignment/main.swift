@@ -1,8 +1,9 @@
 import Foundation
 
 
+var tst = Node()
 var Qu = Queue<Node>()
-var st = Stack<Node>()
+var st = Stack<Node>(MAX: 5,proto: tst)
 var isStack: Bool = false
 var str: String = " stack "
 initialize()
@@ -45,6 +46,10 @@ func displayMenu(){
     print("to delete top node  enter 2")
     print("to get Top node enter 3")
     print("to check if empty enter 4")
+    print("to print sorted values 6")
+    print("to insert at index of your choice press 7")
+    print("to remove at index of your choice press 8")
+
     print("to exit current dataStructure enter 9")
 }
 
@@ -59,7 +64,7 @@ func getLastElement(){
 
 func addElement(){
     let employee =  Node();
-    isStack ? st.push(item: employee) : Qu.enque(item: employee)
+    isStack ? st.push(item: employee , id: employee.id) : Qu.enque(item: employee)
     print("element added to \(str)")
 }
 
@@ -81,6 +86,24 @@ func checkEmpty(){
 
     }
 }
+func readIndex() -> Int {
+    print("insert desired index")
+    if  let line = readLine(){
+     if let index = Int(line){
+         return index
+     }
+    }
+    return 0;
+}
+func insertAtIndex(){
+    let element = Node()
+    let ind = readIndex()
+    st.insertAt(index: ind , item: element)
+}
+func removeAtIndex(){
+    let ind = readIndex()
+    st.removeAt(index: ind);
+}
 func chooseAction(_ number: Int){
    switch number {
     case 0:
@@ -93,6 +116,16 @@ func chooseAction(_ number: Int){
         getLastElement();
    case 4:
         checkEmpty();
+   case 6:
+    var x = st.sort();
+    for i in x{
+        print("sorted \(i.id)")
+    }
+   case 7:
+    insertAtIndex();
+   case 8:
+    removeAtIndex();
+    
    default:
     print("please enter a valid number")
     }
