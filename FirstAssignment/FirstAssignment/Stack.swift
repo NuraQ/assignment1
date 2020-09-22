@@ -31,10 +31,11 @@ class Stack<Element>{
             items.removeLast();
         }
         return last!;
+       
     }
     
     func insertAt(index: Int,item: Element){
-        if sortedItems[index] == nil{
+        if sortedItems[index] == nil && index < maxCapacity{
            sortedItems[index] = item ;
            items.insert(item,at: index)
 
@@ -42,8 +43,9 @@ class Stack<Element>{
     }
     func sort() -> [Element?] {
         var index = 0
+        print("count is \(items.count)")
         var itms = [Element]()
-        for i in 0..<maxKey{
+        for i in 0..<maxKey+1{
             if let x = sortedItems[i] {
                 itms.append(x)
                 index += 1
@@ -62,7 +64,7 @@ class Stack<Element>{
                 items.remove(at: index)
             }else{
                 print("no item at specified index")
-        }
+            }
         
       }
     
@@ -78,3 +80,5 @@ class Stack<Element>{
         items.reserveCapacity(newSize)
     }
 }
+
+

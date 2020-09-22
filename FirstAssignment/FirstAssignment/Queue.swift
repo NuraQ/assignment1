@@ -22,13 +22,13 @@ class Queue<Element>{
             items.append(item)
             print("appended")
         }
-        items.append(item)
     }
      func deque() -> Element?{
         let first = items.first;
         if !items.isEmpty{
             items.removeFirst();
         }
+     
         return first;
     }
     func insertAt(index: Int,item: Element){
@@ -52,7 +52,7 @@ class Queue<Element>{
     func sort() -> [Element] {
         var index = 0
         var  sortedArray = [Element]()
-        for i in 0..<maxKey{
+        for i in 0..<maxKey+1{
             if let x = sortedItems[i] {
                 sortedArray.append(x)
                 index += 1
@@ -73,4 +73,6 @@ class Queue<Element>{
             maxCapacity += newSize
            items.reserveCapacity(newSize)
        }
+    
+    
 }
