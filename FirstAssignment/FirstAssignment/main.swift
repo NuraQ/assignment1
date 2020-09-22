@@ -69,7 +69,7 @@ func addElement(){
 }
 
 func popOperation(){
-    let poppedValue = isStack ? st.pop() : Qu.deque()
+    let poppedValue = isStack ? st.pop(id: st.items[st.items.count-1].id) : Qu.deque(id: st.items[0].id)
     if poppedValue == nil{
         print("nothing to pop ,empty \(str)")
     }else{

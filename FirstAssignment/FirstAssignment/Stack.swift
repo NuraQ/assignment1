@@ -25,10 +25,12 @@ class Stack<Element>{
             print("appended")
         }
     }
-     func pop() -> Element?{
+    func pop(id: Int) -> Element?{
         let last = items.last;
         if !items.isEmpty{
             items.removeLast();
+            sortedItems.removeValue(forKey: id)
+
         }
         return last!;
        

@@ -14,21 +14,21 @@ class Queue<Element>{
        }
     var sortedItems = [Int: Element]()
     func enque(item: Element , id: Int){
-        if id > maxKey && sortedItems.count < maxCapacity{
+        if id > maxKey {
             maxKey = id;
         }
-        if sortedItems[id] == nil{
+        if sortedItems[id] == nil && sortedItems.count < maxCapacity{
            sortedItems[id] = item ;
             items.append(item)
             print("appended")
         }
     }
-     func deque() -> Element?{
+    func deque(id: Int) -> Element?{
         let first = items.first;
         if !items.isEmpty{
             items.removeFirst();
+            sortedItems.removeValue(forKey: id)
         }
-     
         return first;
     }
     func insertAt(index: Int,item: Element){
