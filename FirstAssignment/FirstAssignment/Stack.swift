@@ -16,20 +16,16 @@ class Stack<Element>{
     }
 
     func push(item: Element,id: Int ){
-        if id > maxKey{
-            maxKey = id;
-        }
-        if sortedItems[id] == nil && sortedItems.count < maxCapacity{
-           sortedItems[id] = item ;
+       if items.count < maxCapacity{
             items.append(item)
             print("appended")
         }
+        
     }
-    func pop(id: Int) -> Element?{
+    func pop() -> Element?{
         let last = items.last;
         if !items.isEmpty{
             items.removeLast();
-            sortedItems.removeValue(forKey: id)
 
         }
         return last!;
@@ -43,24 +39,9 @@ class Stack<Element>{
 
         }
     }
-    func sort() -> [Element?] {
-        var index = 0
-        print("count is \(items.count)")
-        var itms = [Element]()
-        for i in 0..<maxKey+1{
-            if let x = sortedItems[i] {
-                itms.append(x)
-                index += 1
-            }
-        }
-        return itms
-
-    }
     
     func removeAt(index: Int){
-          if sortedItems[index] != nil{
-            sortedItems.removeValue(forKey: index)
-          }
+       
          let isIndexValid = items.indices.contains(index)
             if isIndexValid == true{
                 items.remove(at: index)
@@ -83,4 +64,22 @@ class Stack<Element>{
     }
 }
 
+extension Array {
+    mutating func propertySort<T: Comparable>(_ property: (Element) -> T) {
+           sort(by: { property($0) < property($1) })
+       }
+}
 
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
+}

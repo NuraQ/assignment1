@@ -46,7 +46,7 @@ func displayMenu(){
     print("to delete top node  enter 2")
     print("to get Top node enter 3")
     print("to check if empty enter 4")
-    print("to print sorted values 6")
+    print("to print sorted values and remove duplicates 6")
     print("to insert at index of your choice press 7")
     print("to remove at index of your choice press 8")
     print("to expand size press 11")
@@ -69,7 +69,7 @@ func addElement(){
 }
 
 func popOperation(){
-    let poppedValue = isStack ? st.pop(id: st.items[st.items.count-1].id) : Qu.deque(id: st.items[0].id)
+    let poppedValue = isStack ? st.pop() : Qu.deque(id: st.items[0].id)
     if poppedValue == nil{
         print("nothing to pop ,empty \(str)")
     }else{
@@ -104,6 +104,11 @@ func removeAtIndex(){
     let ind = readIndex()
     st.removeAt(index: ind);
 }
+func NlogNSort() -> [Node]{
+   // st.items.removingDuplicates()
+    st.items.propertySort({$0.id})
+    return st.items;
+}
 func chooseAction(_ number: Int){
    switch number {
     case 0:
@@ -117,13 +122,10 @@ func chooseAction(_ number: Int){
     case 4:
         checkEmpty();
     case 6:
-    var arr = isStack ? st.sort() : Qu.sort()
-    for item in 0..<arr.count{
-        if arr[item] != nil{
-            print("sorted with following ids \(arr[item]!.id)")
-        }
-        
-    }
+    var arrSorted = isStack ? NlogNSort() : Qu.sort()
+    for item in arrSorted {
+               print("item is \(item.id)")
+       }
    case 7:
     insertAtIndex();
    case 8:
