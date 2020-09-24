@@ -1,8 +1,9 @@
 import Foundation
 
 
-var Qu = Queue<Node>()
-var st = Stack<Node>()
+var tst = Node()
+var Qu = Queue<Node>(MAX: 5)
+var st = Stack<Node>(MAX: 5)
 var isStack: Bool = false
 var str: String = " stack "
 initialize()
@@ -45,6 +46,10 @@ func displayMenu(){
     print("to delete top node  enter 2")
     print("to get Top node enter 3")
     print("to check if empty enter 4")
+    print("to print sorted values and remove duplicates 6")
+    print("to insert at index of your choice press 7")
+    print("to remove at index of your choice press 8")
+    print("to expand size press 11")
     print("to exit current dataStructure enter 9")
 }
 
@@ -59,12 +64,12 @@ func getLastElement(){
 
 func addElement(){
     let employee =  Node();
-    isStack ? st.push(item: employee) : Qu.enque(item: employee)
+    isStack ? st.push(item: employee , id: employee.id) : Qu.enque(item: employee, id: employee.id)
     print("element added to \(str)")
 }
 
 func popOperation(){
-    let poppedValue = isStack ? st.pop() : Qu.deque()
+    let poppedValue = isStack ? st.pop() : Qu.deque(id: st.items[0].id)
     if poppedValue == nil{
         print("nothing to pop ,empty \(str)")
     }else{
@@ -81,6 +86,29 @@ func checkEmpty(){
 
     }
 }
+func readIndex() -> Int {
+    print("insert desired index")
+    if  let line = readLine(){
+     if let index = Int(line){
+         return index
+     }
+    }
+    return 0;
+}
+func insertAtIndex(){
+    let element = Node()
+    let ind = readIndex()
+    st.insertAt(index: ind , item: element)
+}
+func removeAtIndex(){
+    let ind = readIndex()
+    st.removeAt(index: ind);
+}
+func NlogNSort() -> [Node]{
+   // st.items.removingDuplicates()
+    st.items.propertySort({$0.id})
+    return st.items;
+}
 func chooseAction(_ number: Int){
    switch number {
     case 0:
@@ -91,8 +119,20 @@ func chooseAction(_ number: Int){
         popOperation();
     case 3:
         getLastElement();
-   case 4:
+    case 4:
         checkEmpty();
+    case 6:
+    var arrSorted = isStack ? NlogNSort() : Qu.sort()
+    for item in arrSorted {
+               print("item is \(item.id)")
+       }
+   case 7:
+    insertAtIndex();
+   case 8:
+    removeAtIndex();
+   case 11:
+   isStack ? st.expandSize(newSize: 5) : Qu.expandSize(newSize: 5)
+    
    default:
     print("please enter a valid number")
     }

@@ -7,8 +7,16 @@
 //
 
 import Foundation
-class Node {
-    
+
+class Node: Hashable{
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        return lhs.id == rhs.id
+
+    }
+
+ func hash(into hasher: inout Hasher) {
+       hasher.combine(id)
+   }
     var id: Int;
     var description: String;
     
@@ -18,3 +26,10 @@ class Node {
     }
     
 }
+
+
+
+
+
+
+
